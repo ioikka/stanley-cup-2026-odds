@@ -37,7 +37,9 @@ All endpoints include CORS headers.
 
 ## Auto-Refresh
 
-GitHub Actions (`refresh-odds.yaml`) runs on a schedule to keep `data/odds.json` current. Deployed via GitHub Pages.
+GitHub Actions (`refresh-odds.yaml`) runs on a schedule to keep `data/odds.json` current.
+
+**🔗 Live dashboard:** https://ioikka.github.io/stanley-cup-2026-odds/
 
 ## File Structure
 
