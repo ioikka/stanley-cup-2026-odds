@@ -1,13 +1,17 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-01T12:24:19Z",
+    "lastUpdated": "2026-05-01T13:00:31Z",
     "sources": [
-      "espn"
+      "espn",
+      "espn_bracket"
     ],
-    "teamsRemaining": 14,
+    "teamsRemaining": 11,
     "eliminated": [
+      "Dallas Stars",
+      "Edmonton Oilers",
       "Los Angeles Kings",
-      "Ottawa Senators"
+      "Ottawa Senators",
+      "Pittsburgh Penguins"
     ],
     "season": "2025-26"
   },
@@ -20,167 +24,131 @@
       "bg": "#CC0000",
       "accent": "#000000"
     },
-    "TBL": {
-      "bg": "#002868",
-      "accent": "#005A90"
-    },
     "VGK": {
       "bg": "#B4975A",
       "accent": "#333F4C"
-    },
-    "BUF": {
-      "bg": "#274488",
-      "accent": "#FFB81C"
-    },
-    "DAL": {
-      "bg": "#006847",
-      "accent": "#8F8F8C"
     },
     "MIN": {
       "bg": "#477124",
       "accent": "#792E4C"
     },
+    "BUF": {
+      "bg": "#274488",
+      "accent": "#FFB81C"
+    },
     "MTL": {
       "bg": "#AF1E2D",
       "accent": "#192168"
     },
-    "ANA": {
-      "bg": "#F47A38",
-      "accent": "#B9975B"
+    "TB": {
+      "bg": "#002868",
+      "accent": "#005A90"
     },
     "PHI": {
       "bg": "#ED174C",
       "accent": "#000000"
     },
+    "ANA": {
+      "bg": "#F47A38",
+      "accent": "#B9975B"
+    },
     "UTA": {
       "bg": "#6CCEB2",
       "accent": "#192168"
     },
-    "EDM": {
-      "bg": "#FFB81C",
-      "accent": "#041E42"
-    },
-    "PIT": {
-      "bg": "#FCB514",
-      "accent": "#000000"
-    },
     "BOS": {
-      "bg": "#FFB81C",
-      "accent": "#C8102E"
+      "bg": "#000000",
+      "accent": "#FFB81C"
     }
   },
   "teams": [
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+225",
-      "prob": 30.8,
+      "odds": "+210",
+      "prob": 32.3,
       "tier": "fav",
-      "status": "Round 2 · Swept Kings 4-0"
+      "status": "Adv - Swept Kings 4-0"
     },
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+300",
-      "prob": 25.0,
+      "odds": "+230",
+      "prob": 30.3,
       "tier": "fav",
-      "status": "Round 2 · Swept Senators 4-0"
-    },
-    {
-      "name": "Tampa Bay Lightning",
-      "abbr": "TBL",
-      "odds": "+750",
-      "prob": 11.8,
-      "tier": "fav",
-      "status": "R1 vs Montreal · 2-2"
+      "status": "Adv - Swept Senators 4-0"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+1000",
-      "prob": 9.1,
-      "tier": "con",
-      "status": "R1 vs Utah · Series lead"
-    },
-    {
-      "name": "Buffalo Sabres",
-      "abbr": "BUF",
-      "odds": "+1100",
-      "prob": 8.3,
-      "tier": "con",
-      "status": "R1 vs Bruins · Leads 3-1"
-    },
-    {
-      "name": "Dallas Stars",
-      "abbr": "DAL",
-      "odds": "+1400",
-      "prob": 6.7,
-      "tier": "con",
-      "status": "R1 vs Wild · 2-2"
+      "odds": "+700",
+      "prob": 12.5,
+      "tier": "fav",
+      "status": "Live odds"
     },
     {
       "name": "Minnesota Wild",
       "abbr": "MIN",
-      "odds": "+1800",
-      "prob": 5.3,
-      "tier": "con",
-      "status": "R1 vs Stars · 2-2"
+      "odds": "+950",
+      "prob": 9.5,
+      "tier": "fav",
+      "status": "Live odds"
+    },
+    {
+      "name": "Buffalo Sabres",
+      "abbr": "BUF",
+      "odds": "+1000",
+      "prob": 9.1,
+      "tier": "fav",
+      "status": "Live odds"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+2000",
-      "prob": 4.8,
+      "odds": "+1500",
+      "prob": 6.2,
       "tier": "con",
-      "status": "R1 vs Lightning · 2-2"
+      "status": "Live odds"
     },
     {
-      "name": "Anaheim Ducks",
-      "abbr": "ANA",
-      "odds": "+2200",
-      "prob": 4.3,
+      "name": "Tampa Bay Lightning",
+      "abbr": "TB",
+      "odds": "+1600",
+      "prob": 5.9,
       "tier": "con",
-      "status": "R1 vs Oilers · Leads 3-1"
+      "status": "Live odds"
     },
     {
       "name": "Philadelphia Flyers",
       "abbr": "PHI",
-      "odds": "+3000",
-      "prob": 3.2,
-      "tier": "horse",
-      "status": "R1 vs Penguins · Leads 3-2"
+      "odds": "+2500",
+      "prob": 3.8,
+      "tier": "con",
+      "status": "Live odds"
+    },
+    {
+      "name": "Anaheim Ducks",
+      "abbr": "ANA",
+      "odds": "+2500",
+      "prob": 3.8,
+      "tier": "con",
+      "status": "Live odds"
     },
     {
       "name": "Utah Mammoth",
       "abbr": "UTA",
-      "odds": "+3000",
-      "prob": 3.2,
+      "odds": "+6000",
+      "prob": 1.6,
       "tier": "horse",
-      "status": "R1 vs Golden Knights"
-    },
-    {
-      "name": "Edmonton Oilers",
-      "abbr": "EDM",
-      "odds": "+3000",
-      "prob": 3.2,
-      "tier": "horse",
-      "status": "R1 vs Ducks · Trails 1-3"
-    },
-    {
-      "name": "Pittsburgh Penguins",
-      "abbr": "PIT",
-      "odds": "+6600",
-      "prob": 1.5,
-      "tier": "horse",
-      "status": "R1 vs Flyers · Trails 2-3"
+      "status": "Live odds"
     },
     {
       "name": "Boston Bruins",
       "abbr": "BOS",
-      "odds": "+20000",
-      "prob": 0.5,
+      "odds": "+10000",
+      "prob": 1.0,
       "tier": "horse",
-      "status": "R1 vs Sabres · Trails 1-3"
+      "status": "Live odds"
     }
   ]
 }
