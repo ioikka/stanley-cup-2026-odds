@@ -320,10 +320,6 @@ async function refreshData() {
   btn.textContent = '⟳ Fetching...';
   
   try {
-    // First hit webhook to refresh data
-    await fetch('/webhook/refresh', { method: 'POST' });
-    // Then fetch updated data
-    await new Promise(r => setTimeout(r, 1500));
     await fetchData();
   } catch(e) {
     console.log('Refresh error:', e.message);
