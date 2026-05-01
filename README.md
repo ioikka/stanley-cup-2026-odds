@@ -39,7 +39,7 @@ All endpoints include CORS headers.
 
 GitHub Actions (`refresh-odds.yaml`) runs on a schedule to keep `data/odds.json` current.
 
-**🔗 Live dashboard:** https://ioikka.github.io/stanley-cup-2026-odds/
+**🔗 Live dashboard:** https://ioikka.github.io/stanley-cup-2026-odds/stanley-cup-odds.html
 
 ## File Structure
 
