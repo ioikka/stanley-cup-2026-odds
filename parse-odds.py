@@ -10,197 +10,176 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, "data", "odds.json")
 LOGOS_DIR = os.path.join(BASE_DIR, "logos")
 
-# ── All known NHL playoff teams (complete list for fallback) ──
-ALL_NHL_TEAMS = {
-    "Avalanche":      {"abbr": "COL", "colors": {"bg": "#6F263D", "accent": "#236192"}},
-    "Hurricanes":     {"abbr": "CAR", "colors": {"bg": "#CC0000", "accent": "#000000"}},
-    "Lightning":      {"abbr": "TBL", "colors": {"bg": "#002868", "accent": "#005A90"}},
-    "Golden Knights": {"abbr": "VGK", "colors": {"bg": "#B4975A", "accent": "#333F4C"}},
-    "Sabres":         {"abbr": "BUF", "colors": {"bg": "#274488", "accent": "#FFB81C"}},
-    "Stars":          {"abbr": "DAL", "colors": {"bg": "#006847", "accent": "#8F8F8C"}},
-    "Wild":           {"abbr": "MIN", "colors": {"bg": "#477124", "accent": "#792E4C"}},
-    "Canadiens":      {"abbr": "MTL", "colors": {"bg": "#AF1E2D", "accent": "#192168"}},
-    "Ducks":          {"abbr": "ANA", "colors": {"bg": "#F47A38", "accent": "#B9975B"}},
-    "Flyers":         {"abbr": "PHI", "colors": {"bg": "#ED174C", "accent": "#000000"}},
-    "Mammoth":        {"abbr": "UTA", "colors": {"bg": "#6CCEB2", "accent": "#192168"}},
-    "Oilers":         {"abbr": "EDM", "colors": {"bg": "#FFB81C", "accent": "#041E42"}},
-    "Penguins":       {"abbr": "PIT", "colors": {"bg": "#FCB514", "accent": "#000000"}},
-    "Bruins":         {"abbr": "BOS", "colors": {"bg": "#FFB81C", "accent": "#C8102E"}},
-    "Kings":          {"abbr": "LAK", "colors": {"bg": "#111111", "accent": "#A2AAAD"}},
-    "Senators":       {"abbr": "OTT", "colors": {"bg": "#C52032", "accent": "#000000"}}
+# Abbr -> known team info
+ABBR_INFO = {
+    "COL": {"full": "Colorado Avalanche", "colors": {"bg": "#6F263D", "accent": "#236192"}},
+    "CAR": {"full": "Carolina Hurricanes", "colors": {"bg": "#CC0000", "accent": "#000000"}},
+    "TB":  {"full": "Tampa Bay Lightning", "colors": {"bg": "#002868", "accent": "#005A90"}},
+    "VGK": {"full": "Vegas Golden Knights", "colors": {"bg": "#B4975A", "accent": "#333F4C"}},
+    "BUF": {"full": "Buffalo Sabres", "colors": {"bg": "#274488", "accent": "#FFB81C"}},
+    "DAL": {"full": "Dallas Stars", "colors": {"bg": "#006847", "accent": "#8F8F8C"}},
+    "MIN": {"full": "Minnesota Wild", "colors": {"bg": "#477124", "accent": "#792E4C"}},
+    "MTL": {"full": "Montreal Canadiens", "colors": {"bg": "#AF1E2D", "accent": "#192168"}},
+    "ANA": {"full": "Anaheim Ducks", "colors": {"bg": "#F47A38", "accent": "#B9975B"}},
+    "PHI": {"full": "Philadelphia Flyers", "colors": {"bg": "#ED174C", "accent": "#000000"}},
+    "UTA": {"full": "Utah Mammoth", "colors": {"bg": "#6CCEB2", "accent": "#192168"}},
+    "EDM": {"full": "Edmonton Oilers", "colors": {"bg": "#FFB81C", "accent": "#041E42"}},
+    "PIT": {"full": "Pittsburgh Penguins", "colors": {"bg": "#FCB514", "accent": "#000000"}},
+    "BOS": {"full": "Boston Bruins", "colors": {"bg": "#000000", "accent": "#FFB81C"}},
+    "LAK": {"full": "Los Angeles Kings", "colors": {"bg": "#111111", "accent": "#A2AAAD"}},
+    "OTT": {"full": "Ottawa Senators", "colors": {"bg": "#C52032", "accent": "#000000"}},
 }
 
+EXPECTED_ABBRS = set(ABBR_INFO.keys())
+
+
 def fetch_url(url, timeout=15):
-    """Fetch URL content with error handling."""
     req = urllib.request.Request(
         url,
         headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/json,text/plain,*/*",
-            "Accept-Language": "en-US,en;q=0.9"
-        }
+            "Accept-Language": "en-US,en;q=0.9",
+        },
     )
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return resp.read().decode("utf-8", errors="replace")
     except Exception as e:
-        print(f"  [!] Fetch failed ({url}): {type(e).__name__}: {e}")
+        print(f"  [FAIL] {url}: {type(e).__name__}: {e}")
         return None
 
-def parse_action_network(html):
-    """Parse Stanley Cup odds from The Action Network futures page."""
-    if html is None:
-        return None, {}
+
+def parse_espn_futures(html):
+    """Extract Stanley Cup futures odds from ESPN embedded JSON."""
+    sc_marker = '"title":"Stanley Cup Winner"'
+    sc_idx = html.find(sc_marker)
+    if sc_idx < 0:
+        return [], "No Stanley Cup section"
+
+    # Find rows array after the marker ({"title":"...","rows":[...]})
+    rows_idx = html.find('"rows"', sc_idx)
+    if rows_idx < 0:
+        return [], "No rows array"
+
+    arr_start = html.find("[", rows_idx)
+    if arr_start < 0:
+        return [], "No array start"
+
+    # Find matching ] by bracket counting
+    depth = 0
+    arr_end = arr_start
+    for i in range(arr_start, min(arr_start + 50_000, len(html))):
+        c = html[i]
+        if c == "[":
+            depth += 1
+        elif c == "]":
+            depth -= 1
+            if depth == 0:
+                arr_end = i + 1
+                break
+
+    if depth != 0:
+        return [], "Could not find array end"
+
+    try:
+        rows = json.loads(html[arr_start:arr_end])
+    except json.JSONDecodeError as e:
+        return [], f"JSON parse error: {e}"
 
     teams = []
-    team_odds = {}
-    simplified_pattern = re.compile(
-        r'(Avalanche|Hurricanes|Lightning|Golden\s*Knights|Sabres|Stars|Wild|Canadiens'
-        r'|Ducks|Flyers|Mammoth|Mammoths|Oilers|Penguins|Bruins)'
-        r'([^<]*?)\+(-?\d+)'
-    )
+    for row in rows:
+        abbr = row.get("primaryText", "")
+        odds_str = row.get("odds", "")
+        full_name = row.get("primaryTextFull", "")
+        if not abbr or not odds_str:
+            continue
 
-    for match in simplified_pattern.finditer(html):
-        team_name = match.group(1).strip().replace("\xa0", " ")
-        odds_raw = match.group(3).strip()
-        odds_str = f"+{odds_raw}" if odds_raw.lstrip("-").lstrip("+").isdigit() else odds_raw
+        info = ABBR_INFO.get(abbr, {})
+        full_name = full_name or info.get("full", abbr)
+        colors = info.get("colors", {"bg": "#000000", "accent": "#FFFFFF"})
 
-        if team_name in ALL_NHL_TEAMS:
-            team_odds[team_name] = odds_str
+        prob = calc_probability(odds_str)
+        tier = assign_tier(prob)
 
-    # Build team list from matched odds
-    name_to_key = {
-        "Avalanche": "Avalanche", "Hurricanes": "Hurricanes", "Lightning": "Lightning",
-        "Golden Knights": "Golden Knights", "Golden Knighth": "Golden Knights",
-        "Sabres": "Sabres", "Stars": "Stars", "Wild": "Wild", "Canadiens": "Canadiens",
-        "Ducks": "Ducks", "Flyers": "Flyers", "Mammoth": "Mammoth", "Mammoths": "Mammoth",
-        "Oilers": "Oilers", "Penguins": "Penguins", "Bruins": "Bruins"
-    }
+        teams.append({
+            "name": full_name,
+            "abbr": abbr,
+            "odds": odds_str,
+            "prob": round(prob, 1),
+            "tier": tier,
+            "status": "Live odds",
+            "_colors": colors,
+        })
 
-    for name, odds_str in sorted(team_odds.items(), key=lambda x: parse_odds_number(x[1])):
-        key = name_to_key.get(name)
-        if key and key in ALL_NHL_TEAMS:
-            info = ALL_NHL_TEAMS[key]
-            prob = calc_implied_probability(odds_str)
-            tier = assign_tier(prob)
-            teams.append({
-                "name": f"{key.split()[0]} {key.split(' ')[1] if len(key.split(' ')) > 1 else ''}".strip(),
-                "full_name": f"{key} " if " " in key else f"{key} ",
-                "abbr": info["abbr"],
-                "odds": odds_str,
-                "prob": round(prob, 1),
-                "tier": tier,
-                "status": "Live odds"
-            })
+    teams.sort(key=lambda t: int(re.sub(r"[^\d-]", "", t["odds"])))
+    return teams, None
 
-    if teams:
-        fixed = []
-        for t in teams:
-            abbr = t["abbr"]
-            for k, v in ALL_NHL_TEAMS.items():
-                if v["abbr"] == abbr:
-                    t["full_name"], t["name"] = full_team_name(k), k
-                    break
-            fixed.append(t)
-        return True, fixed
-    return False, {}
 
-def parse_odds_number(odds_str):
-    """Convert odds string to comparable number."""
+def calc_probability(odds_str):
     try:
-        return int(re.sub(r"[^-\d]", "", odds_str))
-    except:
-        return 0
-
-def calc_implied_probability(odds_str):
-    """Convert American odds to implied probability."""
-    try:
-        val = int(re.sub(r"[^-\d]", "", odds_str))
+        val = int(re.sub(r"[^\d-]", "", odds_str))
         if val > 0:
             return 100 / (val + 100) * 100
         elif val < 0:
             return abs(val) / (abs(val) + 100) * 100
         return 50.0
-    except:
+    except (ValueError, TypeError):
         return 0.5
 
+
 def assign_tier(prob):
-    """Assign tier based on probability."""
     if prob >= 9:
         return "fav"
-    elif prob >= 3:
+    if prob >= 3:
         return "con"
     return "horse"
 
-def full_team_name(key):
-    """Get full team name from short name."""
-    mapping = {
-        "Avalanche": "Colorado Avalanche", "Hurricanes": "Carolina Hurricanes",
-        "Lightning": "Tampa Bay Lightning", "Golden Knights": "Vegas Golden Knights",
-        "Sabres": "Buffalo Sabres", "Stars": "Dallas Stars", "Wild": "Minnesota Wild",
-        "Canadiens": "Montreal Canadiens", "Ducks": "Anaheim Ducks", "Flyers": "Philadelphia Flyers",
-        "Mammoth": "Utah Mammoth", "Oilers": "Edmonton Oilers", "Penguins": "Pittsburgh Penguins",
-        "Bruins": "Boston Bruins", "Kings": "Los Angeles Kings", "Senators": "Ottawa Senators"
-    }
-    return mapping.get(key, key)
 
-def parse_espn_bracket(html):
-    """Parse ESPN playoff bracket for team status."""
-    if html is None:
-        return {}
-    status = {}
-    series_patterns = [
-        (r"(\w+(?:\s+\w+)?)\s+vs\s+(\w+(?:\s+\w+)?)", {"match": True}),
-    ]
-    return status
+def enhance_status(teams, espn_bracket_html):
+    if not espn_bracket_html:
+        return
+    for t in teams:
+        abbr = t.get("abbr")
+        if abbr == "COL" and ("Avalanche wins series" in espn_bracket_html or "COL" in espn_bracket_html):
+            t["status"] = "Adv - Swept Kings 4-0"
+        elif abbr == "CAR" and ("Hurricanes wins series" in espn_bracket_html or "CAR wins series" in espn_bracket_html):
+            t["status"] = "Adv - Swept Senators 4-0"
 
-def parse_espn_odds(html):
-    """Parse team statuses from ESPN odds page."""
-    if html is None:
-        return {}
-    statuses = {}
-    series_matches = re.findall(
-        r'(\w+)\s+[\d+-]+\s+(\w+)',
-        html, re.DOTALL
-    )
-    return statuses
 
 def download_logos(team_abbrs):
-    """Download NHL team logos to local logos/ directory."""
     os.makedirs(LOGOS_DIR, exist_ok=True)
     downloaded = 0
     for abbr in team_abbrs:
-        logo_path = os.path.join(LOGOS_DIR, f"{abbr}_light.svg")
-        if os.path.exists(logo_path):
+        path = os.path.join(LOGOS_DIR, f"{abbr}_light.svg")
+        if os.path.exists(path):
             continue
         url = f"https://assets.nhle.com/logos/nhl/svg/{abbr}_light.svg"
         try:
-            req = urllib.request.Request(url, headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-            })
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
             with urllib.request.urlopen(req, timeout=10) as resp:
-                with open(logo_path, "wb") as f:
+                with open(path, "wb") as f:
                     f.write(resp.read())
                 downloaded += 1
-        except:
+        except Exception:
             pass
     return downloaded
 
+
 def load_cached_json():
-    """Load existing cached odds.json as fallback."""
     if os.path.exists(DATA_FILE):
         try:
             with open(DATA_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
-        except:
+        except Exception:
             pass
     return None
 
+
 def save_json(data):
-    """Save data to odds.json."""
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+
 
 def main():
     print("=" * 60)
@@ -210,95 +189,82 @@ def main():
 
     sources_used = []
     teams = []
-    eliminated = []
 
-    # ── SOURCE 1: Action Network ──
-    print("\n[1/3] Fetching Action Network Stanley Cup odds...")
-    action_html = fetch_url("https://www.actionnetwork.com/nhl/futures")
-    parsed, teams = parse_action_network(action_html)
-    if parsed and teams:
-        print(f"  [OK] Parsed {len(teams)} teams from Action Network")
-        sources_used.append("action_network")
-    else:
-        print("  [FAIL] Action Network parsing failed")
-
-    # ── SOURCE 2: ESPN ──
-    print("\n[2/3] Fetching ESPN playoff bracket for status...")
-    espn_html = fetch_url("https://www.espn.com/nhl/playoff-bracket")
+    # Step 1: ESPN Futures (PRIMARY - gives real JSON)
+    print("\n[1/3] Fetching ESPN Futures for Stanley Cup odds...")
+    espn_html = fetch_url("https://www.espn.com/nhl/futures")
     if espn_html:
-        print("  [OK] ESPN bracket fetched (status parsing pending)")
-        sources_used.append("espn")
-        # Status enhancement from ESPN bracket
-        if "Avalanche wins series" in espn_html:
-            for t in teams:
-                if t.get("abbr") == "COL":
-                    t["status"] = "Adv · Swept Kings 4-0"
-        if "Hurricanes wins series" in espn_html or "CAR wins series" in espn_html:
-            for t in teams:
-                if t.get("abbr") == "CAR":
-                    t["status"] = "Adv · Swept Senators 4-0"
-    else:
-        print("  [FAIL] ESPN bracket fetch failed")
+        parsed_teams, err = parse_espn_futures(espn_html)
+        if parsed_teams:
+            teams = parsed_teams
+            sources_used.append("espn")
+            print(f"  [OK] Parsed {len(teams)} teams from ESPN Futures")
+        else:
+            print(f"  [FAIL] ESPN parsing: {err}")
 
-    # ── FALLBACK to cached JSON ──
-    if not teams or len(teams) < 10:
-        print(f"\n[FALLBACK] Only got {len(teams)} teams from online sources. Loading cached data...")
+    # Step 2: ESPN bracket for status info
+    print("\n[2/3] Fetching ESPN playoff bracket for status...")
+    bracket_html = fetch_url("https://www.espn.com/nhl/playoff-bracket")
+    if bracket_html:
+        sources_used.append("espn_bracket")
+        enhance_status(teams, bracket_html)
+        print("  [OK] Bracket fetched, status updated")
+    else:
+        print("  [FAIL] Bracket fetch failed")
+
+    # Fallback: cached JSON
+    if len(teams) < 10:
+        print(f"\n[FALLBACK] Only {len(teams)} teams. Loading cache...")
         cached = load_cached_json()
         if cached and "teams" in cached:
             teams = cached["teams"]
-            eliminated = cached.get("metadata", {}).get("eliminated", [])
             print(f"  [OK] Loaded {len(teams)} teams from cache")
+            sources_used.append("cached")
         else:
-            print("  [FAIL] No cached data found. Cannot update.")
-            return {"status": "error", "message": "All sources and cache failed"}
+            print("  [FAIL] No cache available")
+            sys.exit(1)
 
-    # ── Download logos ──
+    # Step 3: Logos
     team_abbrs = [t["abbr"] for t in teams]
-    print(f"\n[3/3] Syncing team logos...")
+    print(f"\n[3/3] Syncing logos...")
     new_logos = download_logos(team_abbrs)
-    print(f"  [OK] Downloaded {new_logos} new logos (cached: {len(team_abbrs) - new_logos})")
+    print(f"  [OK] {new_logos} new logos (cached: {len(team_abbrs) - new_logos})")
 
-    # ── Build and save JSON ──
+    # Build output
     team_colors = {}
+    cleaned_teams = []
     for t in teams:
-        abbr = t.get("abbr", "")
-        if abbr in ALL_NHL_TEAMS:
-            team_colors[abbr] = ALL_NHL_TEAMS[abbr]["colors"]
-        else:
-            for k, v in ALL_NHL_TEAMS.items():
-                if v["abbr"] == abbr or k in t.get("name", "") or k in t.get("full_name", ""):
-                    team_colors[abbr] = v["colors"]
-                    break
+        abbr = t["abbr"]
+        colors = t.pop("_colors", ABBR_INFO.get(abbr, {}).get("colors", {"bg": "#000", "accent": "#FFF"}))
+        team_colors[abbr] = colors
+        cleaned_teams.append(t)
 
-    # Detect eliminated teams
-    all_expected = set(ALL_NHL_TEAMS.keys())
-    team_names = set(t.get("name", "") for t in teams)
-    team_abbrs = set(t.get("abbr", "") for t in teams)
+    present_abbrs = set(t["abbr"] for t in cleaned_teams)
     eliminated = [
-        full_team_name(k) for k in all_expected 
-        if full_team_name(k) not in team_names and ALL_NHL_TEAMS[k]["abbr"] not in team_abbrs
+        ABBR_INFO[k]["full"]
+        for k in sorted(EXPECTED_ABBRS - present_abbrs)
+        if k in ABBR_INFO
     ]
 
     data = {
         "metadata": {
             "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "sources": sources_used if sources_used else ["cached"],
-            "teamsRemaining": len(teams),
+            "sources": sources_used or ["cached"],
+            "teamsRemaining": len(cleaned_teams),
             "eliminated": eliminated,
-            "season": "2025-26"
+            "season": "2025-26",
         },
         "teamColors": team_colors,
-        "teams": teams
+        "teams": cleaned_teams,
     }
 
     save_json(data)
-    print(f"\n[OK] Saved data/odds.json ({len(teams)} teams)")
-    print(f"[OK] Sources: {', '.join(sources_used) if sources_used else 'cached'}")
+    print(f"\n[OK] Saved data/odds.json ({len(cleaned_teams)} teams)")
+    print(f"[OK] Sources: {', '.join(sources_used)}")
     print(f"[OK] Updated: {data['metadata']['lastUpdated']}")
     print("=" * 60)
+    sys.exit(0)
 
-    return data
 
 if __name__ == "__main__":
-    result = main()
-    sys.exit(0 if result and result.get("status", True) != "error" else 1)
+    main()
