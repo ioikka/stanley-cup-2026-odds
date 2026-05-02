@@ -1,12 +1,13 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-01T22:54:09Z",
+    "lastUpdated": "2026-05-02T03:25:10Z",
     "sources": [
       "espn",
       "espn_bracket"
     ],
-    "teamsRemaining": 11,
+    "teamsRemaining": 10,
     "eliminated": [
+      "Boston Bruins",
       "Dallas Stars",
       "Edmonton Oilers",
       "Los Angeles Kings",
@@ -28,21 +29,21 @@
       "bg": "#B4975A",
       "accent": "#333F4C"
     },
-    "MIN": {
-      "bg": "#477124",
-      "accent": "#792E4C"
+    "TB": {
+      "bg": "#002868",
+      "accent": "#005A90"
     },
     "BUF": {
       "bg": "#274488",
       "accent": "#FFB81C"
     },
+    "MIN": {
+      "bg": "#477124",
+      "accent": "#792E4C"
+    },
     "MTL": {
       "bg": "#AF1E2D",
       "accent": "#192168"
-    },
-    "TB": {
-      "bg": "#002868",
-      "accent": "#005A90"
     },
     "PHI": {
       "bg": "#ED174C",
@@ -55,10 +56,6 @@
     "UTA": {
       "bg": "#6CCEB2",
       "accent": "#192168"
-    },
-    "BOS": {
-      "bg": "#000000",
-      "accent": "#FFB81C"
     }
   },
   "teams": [
@@ -87,6 +84,22 @@
       "status": "Live odds"
     },
     {
+      "name": "Tampa Bay Lightning",
+      "abbr": "TB",
+      "odds": "+750",
+      "prob": 11.8,
+      "tier": "fav",
+      "status": "Live odds"
+    },
+    {
+      "name": "Buffalo Sabres",
+      "abbr": "BUF",
+      "odds": "+950",
+      "prob": 9.5,
+      "tier": "fav",
+      "status": "Live odds"
+    },
+    {
       "name": "Minnesota Wild",
       "abbr": "MIN",
       "odds": "+950",
@@ -95,26 +108,10 @@
       "status": "Live odds"
     },
     {
-      "name": "Buffalo Sabres",
-      "abbr": "BUF",
-      "odds": "+1000",
-      "prob": 9.1,
-      "tier": "fav",
-      "status": "Live odds"
-    },
-    {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1500",
-      "prob": 6.2,
-      "tier": "con",
-      "status": "Live odds"
-    },
-    {
-      "name": "Tampa Bay Lightning",
-      "abbr": "TB",
-      "odds": "+1600",
-      "prob": 5.9,
+      "odds": "+2500",
+      "prob": 3.8,
       "tier": "con",
       "status": "Live odds"
     },
@@ -137,16 +134,8 @@
     {
       "name": "Utah Mammoth",
       "abbr": "UTA",
-      "odds": "+6000",
-      "prob": 1.6,
-      "tier": "horse",
-      "status": "Live odds"
-    },
-    {
-      "name": "Boston Bruins",
-      "abbr": "BOS",
-      "odds": "+10000",
-      "prob": 1.0,
+      "odds": "+8000",
+      "prob": 1.2,
       "tier": "horse",
       "status": "Live odds"
     }
