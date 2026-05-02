@@ -1,9 +1,8 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-02T03:25:10Z",
+    "lastUpdated": "2026-05-02T06:11:09Z",
     "sources": [
-      "espn",
-      "espn_bracket"
+      "cached"
     ],
     "teamsRemaining": 10,
     "eliminated": [
