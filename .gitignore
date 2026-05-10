@@ -1,0 +1,7 @@
+# Logo cache (SVG files, fetch via parser)
+logos/
+
+# Python byte-compile
+__pycache__/
+*.pyc
+*.pyo

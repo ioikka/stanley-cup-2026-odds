@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Stanley Cup Championship Odds</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #1a1a2e, #16213e);
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 16px;
+  }
+  .container {
+    max-width: 940px;
+    width: 100%;
+    background: linear-gradient(180deg, #1a2744 0%, #0f1b33 100%);
+    border-radius: 20px;
+    padding: 36px 32px 24px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    background: linear-gradient(90deg, #f0c040, #fff, #f0c040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #6b7394;
+    margin-bottom: 28px;
+  }
+  .trophy { text-align: center; font-size: 48px; margin-bottom: 8px; }
+  .tier-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+    padding: 10px 0 6px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+  .tier-label.fav { color: #ef4444; }
+  .tier-label.con { color: #3b82f6; }
+  .tier-label.horse { color: #6366f1; }
+  .team-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .team-row:hover {
+    background: rgba(255,255,255,0.04);
+    transform: translateX(2px);
+  }
+  .rank {
+    width: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #444466;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .rank.top3 { color: #f0c040; text-shadow: 0 0 8px rgba(240,192,64,0.4); }
+  .logo-wrap {
+    width: 46px;
+    height: 46px;
+    margin: 0 12px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #1e1e3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,255,255,0.08);
+  }
+  .logo-wrap img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 2;
+  }
+  .logo-wrap .abbr {
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.7);
+    z-index: 1;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  }
+  .team-info {
+    width: 165px;
+    flex-shrink: 0;
+  }
+  .team-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .team-meta {
+    font-size: 11px;
+    color: #5b6384;
+    margin-top: 1px;
+  }
+  .bar-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bar-container {
+    flex: 1;
+    height: 26px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 100%);
+  }
+  .bar.animate { width: var(--width); }
+  .prob-label {
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 42px;
+    text-align: right;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    font-size: 11px;
+    color: #555;
+  }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .source {
+    font-size: 10px;
+    color: #333;
+    text-align: center;
+    margin-top: 14px;
+  }
+  .elite-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #ef4444 0%, #3b82f6 50%, #6366f1 100%);
+    opacity: 0.3;
+  }
+  .refresh-info {
+    text-align: center;
+    font-size: 10px;
+    color: #444;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+  }
+  .refresh-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #888;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: all 0.2s;
+  }
+  .refresh-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .refresh-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .update-time {
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="trophy">🏆</div>
+  <h1>Stanley Cup 2026</h1>
+  <div class="subtitle" id="subtitle">Loading odds...</div>
+  <div class="elite-bar"></div>
+
+  <div id="teams"></div>
+
+  <div class="footer">
+    <div class="legend">
+      <span><span class="legend-dot" style="background:#ef4444;"></span> Favorites</span>
+      <span><span class="legend-dot" style="background:#3b82f6;"></span> Contenders</span>
+      <span><span class="legend-dot" style="background:#6366f1;"></span> Longshots</span>
+    </div>
+  </div>
+  <div class="refresh-info">
+    <button class="refresh-btn" id="refreshBtn" onclick="refreshData()">↻ Refresh</button>
+    <span class="update-time" id="updateTime"></span>
+    <span class="update-time" id="sourceInfo"></span>
+  </div>
+  <div class="source" id="source"></div>
+</div>
+
+<script>
+// ── Embedded fallback data (used if JSON fetch fails) ──
+const FALLBACK_DATA = {
+  "teamColors": {
+    "COL": { "bg": "#6F263D", "accent": "#236192" },
+    "CAR": { "bg": "#CC0000", "accent": "#000000" },
+    "TBL": { "bg": "#002868", "accent": "#005A90" },
+    "VGK": { "bg": "#B4975A", "accent": "#333F4C" },
+    "BUF": { "bg": "#274488", "accent": "#FFB81C" },
+    "DAL": { "bg": "#006847", "accent": "#8F8F8C" },
+    "MIN": { "bg": "#477124", "accent": "#792E4C" },
+    "MTL": { "bg": "#AF1E2D", "accent": "#192168" },
+    "ANA": { "bg": "#F47A38", "accent": "#B9975B" },
+    "PHI": { "bg": "#ED174C", "accent": "#000000" },
+    "UTA": { "bg": "#6CCEB2", "accent": "#192168" },
+    "EDM": { "bg": "#FFB81C", "accent": "#041E42" },
+    "PIT": { "bg": "#FCB514", "accent": "#000000" },
+    "BOS": { "bg": "#FFB81C", "accent": "#C8102E" }
+  },
+  "teams": [
+    { "name": "Colorado Avalanche", "abbr": "COL", "odds": "+225", "prob": 30.8, "tier": "fav", "status": "Round 2 · Swept Kings 4-0" },
+    { "name": "Carolina Hurricanes", "abbr": "CAR", "odds": "+300", "prob": 25.0, "tier": "fav", "status": "Round 2 · Swept Senators 4-0" },
+    { "name": "Tampa Bay Lightning", "abbr": "TBL", "odds": "+750", "prob": 11.8, "tier": "fav", "status": "R1 vs Montreal · 2-2" },
+    { "name": "Vegas Golden Knights", "abbr": "VGK", "odds": "+1000", "prob": 9.1, "tier": "con", "status": "R1 vs Utah · Series lead" },
+    { "name": "Buffalo Sabres", "abbr": "BUF", "odds": "+1100", "prob": 8.3, "tier": "con", "status": "R1 vs Bruins · Leads 3-1" },
+    { "name": "Dallas Stars", "abbr": "DAL", "odds": "+1400", "prob": 6.7, "tier": "con", "status": "R1 vs Wild · 2-2" },
+    { "name": "Minnesota Wild", "abbr": "MIN", "odds": "+1800", "prob": 5.3, "tier": "con", "status": "R1 vs Stars · 2-2" },
+    { "name": "Montreal Canadiens", "abbr": "MTL", "odds": "+2000", "prob": 4.8, "tier": "con", "status": "R1 vs Lightning · 2-2" },
+    { "name": "Anaheim Ducks", "abbr": "ANA", "odds": "+2200", "prob": 4.3, "tier": "con", "status": "R1 vs Oilers · Leads 3-1" },
+    { "name": "Philadelphia Flyers", "abbr": "PHI", "odds": "+3000", "prob": 3.2, "tier": "horse", "status": "R1 vs Penguins · Leads 3-2" },
+    { "name": "Utah Mammoth", "abbr": "UTA", "odds": "+3000", "prob": 3.2, "tier": "horse", "status": "R1 vs Golden Knights" },
+    { "name": "Edmonton Oilers", "abbr": "EDM", "odds": "+3000", "prob": 3.2, "tier": "horse", "status": "R1 vs Ducks · Trails 1-3" },
+    { "name": "Pittsburgh Penguins", "abbr": "PIT", "odds": "+6600", "prob": 1.5, "tier": "horse", "status": "R1 vs Flyers · Trails 2-3" },
+    { "name": "Boston Bruins", "abbr": "BOS", "odds": "+20000", "prob": 0.5, "tier": "horse", "status": "R1 vs Sabres · Trails 1-3" }
+  ]
+};
+
+// ── Chart config ──
+const tierGradient = {
+  fav: 'linear-gradient(90deg, #ef4444, #dc2626)',
+  con: 'linear-gradient(90deg, #3b82f6, #2563eb)',
+  horse: 'linear-gradient(90deg, #6366f1, #8b5cf6)'
+};
+const maxProb = 35;
+
+// ── Data fetching ──
+let currentData = FALLBACK_DATA;
+let pollInterval;
+
+async function fetchData() {
+  try {
+    const resp = await fetch('data/odds.json?t=' + Date.now());
+    if (resp.ok) {
+      currentData = await resp.json();
+      renderChart();
+      return true;
+    }
+  } catch(e) {
+    console.log('JSON fetch failed, using fallback:', e.message);
+  }
+  return false;
+}
+
+async function refreshData() {
+  const btn = document.getElementById('refreshBtn');
+  btn.disabled = true;
+  btn.textContent = '⟳ Fetching...';
+  
+  try {
+    // First hit webhook to refresh data
+    await fetch('/webhook/refresh', { method: 'POST' });
+    // Then fetch updated data
+    await new Promise(r => setTimeout(r, 1500));
+    await fetchData();
+  } catch(e) {
+    console.log('Refresh error:', e.message);
+  }
+  
+  btn.disabled = false;
+  btn.textContent = '↻ Refresh';
+}
+
+function renderChart() {
+  const container = document.getElementById('teams');
+  container.innerHTML = '';
+  
+  const teams = currentData.teams || FALLBACK_DATA.teams;
+  const colors = currentData.teamColors || FALLBACK_DATA.teamColors;
+  const meta = currentData.metadata || {};
+  
+  // Update subtitle
+  const teamsRemaining = teams.length;
+  const lastUpdated = meta.lastUpdated || '';
+  const sources = meta.sources || ['fallback'];
+  const eliminated = meta.eliminated || [];
+  
+  document.getElementById('subtitle').textContent = 
+    `${teamsRemaining} Teams Remaining · Championship Probability · ${sources.join(', ').toUpperCase()}`;
+  
+  // Update footer
+  document.getElementById('source').textContent = 
+    `Source: ${sources.join(' · ')} · Updated: ${lastUpdated || 'N/A'}${
+      eliminated.length ? ' · Eliminated: ' + eliminated.join(', ') : ''
+    }`;
+  
+  document.getElementById('sourceInfo').textContent = `Sources: ${sources.join(', ')}`;
+  document.getElementById('updateTime').textContent = 
+    lastUpdated ? `Updated: ${new Date(lastUpdated).toLocaleString()}` : 'Using fallback data';
+  
+  // Render teams
+  let currentTier = '';
+  
+  teams.forEach((team, i) => {
+    if (team.tier !== currentTier) {
+      currentTier = team.tier;
+      const label = document.createElement('div');
+      label.className = `tier-label ${team.tier}`;
+      label.textContent = { fav: '★ FAVORITES', con: '◆ CONTENDERS', horse: '◇ LONGSHOTS' }[team.tier];
+      container.appendChild(label);
+    }
+    
+    const row = document.createElement('div');
+    row.className = 'team-row';
+    const barWidth = (team.prob / maxProb) * 100;
+    const teamColors = colors[team.abbr] || { bg: '#333', accent: '#666' };
+    
+    // Try local logo first, fall back to CDN
+    row.innerHTML = `
+      <div class="rank ${i < 3 ? 'top3' : ''}">${i + 1}</div>
+      <div class="logo-wrap" style="background: radial-gradient(circle at 35% 35%, ${teamColors.bg}, ${teamColors.accent});">
+        <span class="abbr">${team.abbr}</span>
+        <img src="logos/${team.abbr}_light.svg" alt="${team.name}"
+          onerror="this.src='https://assets.nhle.com/logos/nhl/svg/${team.abbr}_light.svg'; this.onerror=null;"
+          onload="this.previousElementSibling.style.display='none'">
+      </div>
+      <div class="team-info">
+        <div class="team-name">${team.name}</div>
+        <div class="team-meta">${team.odds} · ${team.status}</div>
+      </div>
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar" style="--width: ${barWidth}%; background: ${tierGradient[team.tier]};"></div>
+        </div>
+        <div class="prob-label">${team.prob}%</div>
+      </div>
+    `;
+    container.appendChild(row);
+    
+    setTimeout(() => {
+      row.querySelector('.bar').classList.add('animate');
+    }, 100 + i * 70);
+  });
+}
+
+// ── Initialize ──
+async function init() {
+  const fetched = await fetchData();
+  if (!fetched) {
+    renderChart();
+  }
+  
+  // Auto-refresh every 120 seconds
+  pollInterval = setInterval(async () => {
+    const wasFetched = await fetchData();
+    if (!wasFetched) {
+      clearInterval(pollInterval);
+    }
+  }, 120000);
+}
+
+init();
+</script>
+</body>
+</html>
