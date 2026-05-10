@@ -32,6 +32,58 @@ ABBR_INFO = {
 
 EXPECTED_ABBRS = set(ABBR_INFO.keys())
 
+# Reverse lookup: full team name → abbreviation (for hockeystats.com)
+TEAM_NAME_TO_ABBR = {v["full"]: k for k, v in ABBR_INFO.items()}
+
+# All known NHL team names (lowercase) → abbreviation (broader matching)
+ALL_NAME_TO_ABBR = {
+    "colorado avalanche": "COL",
+    "carolina hurricanes": "CAR",
+    "tampa bay lightning": "TB",
+    "vegas golden knights": "VGK",
+    "buffalo sabres": "BUF",
+    "dallas stars": "DAL",
+    "minnesota wild": "MIN",
+    "montreal canadiens": "MTL",
+    "anaheim ducks": "ANA",
+    "philadelphia flyers": "PHI",
+    "utah mammoth": "UTA",
+    "edmonton oilers": "EDM",
+    "pittsburgh penguins": "PIT",
+    "boston bruins": "BOS",
+    "los angeles kings": "LAK",
+    "ottawa senators": "OTT",
+    "washington capitals": "WSH",
+    "columbus blue jackets": "CBJ",
+    "detroit red wings": "DET",
+    "new york islanders": "NYI",
+    "new jersey devils": "NJD",
+    "st. louis blues": "STL",
+    "nashville predators": "NSH",
+    "san jose sharks": "SJS",
+    "florida panthers": "FLA",
+    "winnipeg jets": "WPG",
+    "seattle kraken": "SEA",
+    "toronto maple leafs": "TOR",
+    "calgary flames": "CGY",
+    "new york rangers": "NYR",
+    "chicago blackhawks": "CHI",
+    "vancouver canucks": "VAN",
+}
+
+
+def prob_to_american_odds(prob):
+    """Convert win probability (0-100) to American odds string."""
+    if prob <= 0:
+        return "+10000"
+    if prob >= 100:
+        return "-100"
+    decimal_odds = 100.0 / prob
+    if decimal_odds >= 2.0:
+        return f"+{int(round((decimal_odds - 1) * 100))}"
+    else:
+        return f"-{int(round(100 / (decimal_odds - 1)))}"
+
 
 def fetch_url(url, timeout=15):
     req = urllib.request.Request(
@@ -113,6 +165,65 @@ def parse_espn_futures(html):
 
     teams.sort(key=lambda t: int(re.sub(r"[^\d-]", "", t["odds"])))
     return teams, None
+
+
+def parse_hockeystats(html):
+    """Extract Stanley Cup win probabilities from hockeystats.com JSON-LD."""
+    # Extract all JSON-LD script blocks
+    scripts = re.findall(
+        r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+        html,
+        re.DOTALL,
+    )
+
+    teams = []
+    for script_text in scripts:
+        try:
+            parsed = json.loads(script_text)
+        except json.JSONDecodeError:
+            continue
+
+        if parsed.get("@type") != "SportsTeam":
+            continue
+
+        name = parsed.get("name", "")
+        # Find abbreviation from full name
+        abbr = ALL_NAME_TO_ABBR.get(name.lower(), "")
+        if not abbr:
+            continue
+
+        # Extract Stanley Cup probability from additionalProperty
+        stanley_prob = None
+        for prop in parsed.get("additionalProperty", []):
+            if "Stanley Cup" in prop.get("name", ""):
+                stanley_prob = prop.get("value")
+                break
+
+        if stanley_prob is None:
+            continue
+
+        try:
+            prob = float(stanley_prob)
+        except (ValueError, TypeError):
+            continue
+
+        info = ABBR_INFO.get(abbr, {})
+        colors = info.get("colors", {"bg": "#000000", "accent": "#FFFFFF"})
+        odds_str = prob_to_american_odds(prob)
+        tier = assign_tier(prob)
+
+        teams.append({
+            "name": name,
+            "abbr": abbr,
+            "odds": odds_str,
+            "prob": round(prob, 1),
+            "tier": tier,
+            "status": "Live odds (hockeystats)",
+            "_colors": colors,
+        })
+
+    teams.sort(key=lambda t: t["prob"], reverse=True)
+    return teams, None if teams else "No teams parsed"
 
 
 def calc_probability(odds_str):
@@ -212,9 +323,24 @@ def main():
     else:
         print("  [FAIL] Bracket fetch failed")
 
-    # Fallback: cached JSON (only if scrape returned nothing useful)
+    # Fallback: hockeystats.com (works from cloud IPs that ESPN blocks)
     if len(teams) < 2:
-        print(f"\n[FALLBACK] Only {len(teams)} teams. Loading cache...")
+        print(f"\n[FALLBACK] Only {len(teams)} teams from ESPN. Trying hockeystats.com...")
+        hs_html = fetch_url("https://hockeystats.com/playoff-odds")
+        if hs_html:
+            hs_teams, hs_err = parse_hockeystats(hs_html)
+            if hs_teams:
+                teams = hs_teams
+                sources_used.append("hockeystats")
+                print(f"  [OK] Parsed {len(teams)} teams from hockeystats.com")
+            else:
+                print(f"  [FAIL] hockeystats parsing: {hs_err}")
+        else:
+            print("  [FAIL] Could not fetch hockeystats.com")
+
+    # Fallback: cached JSON (only if all scrapes returned nothing useful)
+    if len(teams) < 2:
+        print(f"\n[FALLBACK] Only {len(teams)} teams total. Loading cache...")
         cached = load_cached_json()
         if cached and "teams" in cached:
             teams = cached["teams"]
@@ -266,7 +392,7 @@ def main():
     print(f"[OK] Updated: {data['metadata']['lastUpdated']}")
 
     # Machine-readable signal for CI: live scrape vs fallback
-    live = "espn" in sources_used
+    live = "espn" in sources_used or "hockeystats" in sources_used
     print(f"SCRAPE_STATUS={'live' if live else 'cached'}")
     print("=" * 60)
 
