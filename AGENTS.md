@@ -8,7 +8,7 @@
 |--------|----------|----|------|---------------------|------------------|
 | **rtxlinx** | rtxlinx | 192.168.1.6 | ikka | Local (self) | SSH (`id_mcp`, passwordless) |
 | **ser5** | ser5 | 192.168.1.5 / 94.157.122.90 (WAN) | ikka | SSH (`id_mcp`, passwordless) | Local (self) |
-| **gl66** | — | 192.168.1.66 | ikka | SSH (`id_mcp`) | — |
+| **gl66** | GL66 | 192.168.1.66 | ikka | SSH (`id_mcp`, passwordless) | SSH (`id_mcp`, passwordless) |
 | **viktor** | — | 127.0.0.1:9999 (reverse tunnel) | ikka | SSH (`id_ed25519`, localhost tunnel) | SSH (`id_obnet`, port 10000) |
 
 ### Remote
@@ -22,7 +22,7 @@
 | From → To | rtxlinx | ser5 | vps-vless | viktor | gl66 |
 |-----------|---------|------|-----------|--------|------|
 | **rtxlinx** | — | ✅ `id_mcp` | ✅ `id_ed25519` | ✅ `id_ed25519` (port 9999) | ✅ `id_mcp` |
-| **ser5** | ✅ `id_mcp` | — | ✅ `id_ed25519` | ✅ `id_obnet` (port 10000) | — |
+| **ser5** | ✅ `id_mcp` | — | ✅ `id_ed25519` | ✅ `id_obnet` (port 10000) | ✅ `id_mcp` |
 | **viktor** | 🔁 reverse tunnel (rtx) | 🔁 reverse tunnel (ser5) | — | — | — |
 | **vps-vless** | — | — | — | — | — |
 
@@ -30,7 +30,7 @@
 
 | Key | Comment | Used For |
 |-----|---------|----------|
-| `id_mcp` | mcp-servers | rtxlinx ↔ ser5, rtxlinx → gl66 |
+| `id_mcp` | mcp-servers | rtxlinx ↔ ser5, rtxlinx ↔ gl66, ser5 → gl66 |
 | `id_ed25519` | vast-ai-key (ser5) / vps-vless (rtxlinx) | VPS access (different keypair per machine) |
 | `id_obnet` | ser5→viktor tunnel auth | ser5 → viktor (port 10000) |
 | `id_ed25519_tunnel` | viktor→ser5 reverse tunnel | viktor systemd service |
@@ -43,6 +43,7 @@
 - **rtxlinx:** Local AI server, runs vLLM (`http://192.168.1.6:8000/v1`)
 - **ser5:** Home server, runs Docker services (relay-xray, Home Assistant, monitoring)
 - **viktor:** Ubuntu 18.04 in Moscow Oblast (AS5969), reverse SSH tunnels to both rtxlinx (port 9999) and ser5 (port 10000). Outbound-only (CGNAT).
+- **gl66:** Windows PC, SSH key auth via `C:\ProgramData\ssh\administrators_authorized_keys` (not `~/.ssh/authorized_keys` — Windows sshd's `Match Group administrators` takes precedence).
 
 ## VPN / Tunnel Topology
 
