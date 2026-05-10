@@ -212,8 +212,8 @@ def main():
     else:
         print("  [FAIL] Bracket fetch failed")
 
-    # Fallback: cached JSON
-    if len(teams) < 10:
+    # Fallback: cached JSON (only if scrape returned nothing useful)
+    if len(teams) < 2:
         print(f"\n[FALLBACK] Only {len(teams)} teams. Loading cache...")
         cached = load_cached_json()
         if cached and "teams" in cached:
@@ -223,6 +223,8 @@ def main():
         else:
             print("  [FAIL] No cache available")
             sys.exit(1)
+    elif teams:
+        print(f"  [OK] {len(teams)} teams scraped — no fallback needed")
 
     # Step 3: Logos
     team_abbrs = [t["abbr"] for t in teams]
@@ -262,8 +264,13 @@ def main():
     print(f"\n[OK] Saved data/odds.json ({len(cleaned_teams)} teams)")
     print(f"[OK] Sources: {', '.join(sources_used)}")
     print(f"[OK] Updated: {data['metadata']['lastUpdated']}")
+
+    # Machine-readable signal for CI: live scrape vs fallback
+    live = "espn" in sources_used
+    print(f"SCRAPE_STATUS={'live' if live else 'cached'}")
     print("=" * 60)
-    sys.exit(0)
+
+    sys.exit(0 if live else 1)
 
 
 if __name__ == "__main__":

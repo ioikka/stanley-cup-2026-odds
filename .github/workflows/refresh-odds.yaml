@@ -25,14 +25,26 @@ jobs:
       - name: Run odds parser
         id: parse
         run: python parse-odds.py
+        continue-on-error: true
+
+      - name: Check scrape status
+        id: check
+        run: |
+          if [ "${{ steps.parse.outcome }}" != "success" ]; then
+            echo "::warning::ESPN scrape failed (cached fallback used) — skipping commit"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Commit updated data
+        if: steps.check.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/odds.json
           if git diff --staged --quiet; then
-            echo "No changes to commit."
+            echo "No data changes to commit."
           else
             git commit -m "auto: update Stanley Cup odds [$(date -u +%Y-%m-%d)]"
             git push
