@@ -54,14 +54,6 @@ viktor (Moscow, CGNAT)
 ser5:51236 ── VLESS+REALITY relay ──→ vps-vless (OVH)
 ```
 
-## ESPN Scraping & IP Considerations
-
-- **Residential IPs work** — ser5 (94.157.122.90) can scrape ESPN successfully
-- **Cloud IPs blocked** — VPS (OVH), GitHub Actions (Azure) all return 403 Forbidden
-- **hockeystats.com works everywhere** — no cloud IP blocking, used as fallback source
-- **Parser fallback chain:** ESPN → hockeystats.com → cached `data/odds.json`
-- A hockeystats scrape counts as "live" data (exit code 0), so CI commits work
-
 ## SSH Config Tips
 
 - All machines use `StrictHostKeyChecking no` for convenience
