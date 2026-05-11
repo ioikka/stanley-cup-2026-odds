@@ -1,8 +1,9 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-11T17:59:02Z",
+    "lastUpdated": "2026-05-11T20:00:10Z",
     "sources": [
-      "hockeystats"
+      "espn",
+      "espn_bracket"
     ],
     "teamsRemaining": 7,
     "eliminated": [
@@ -31,10 +32,6 @@
       "bg": "#B4975A",
       "accent": "#333F4C"
     },
-    "BUF": {
-      "bg": "#274488",
-      "accent": "#FFB81C"
-    },
     "MTL": {
       "bg": "#AF1E2D",
       "accent": "#192168"
@@ -42,6 +39,10 @@
     "MIN": {
       "bg": "#477124",
       "accent": "#792E4C"
+    },
+    "BUF": {
+      "bg": "#274488",
+      "accent": "#FFB81C"
     },
     "ANA": {
       "bg": "#F47A38",
@@ -52,58 +53,58 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+148",
-      "prob": 40.3,
+      "odds": "+150",
+      "prob": 40.0,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Adv - Swept Senators 4-0"
     },
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+256",
-      "prob": 28.1,
+      "odds": "+185",
+      "prob": 35.1,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Adv - Swept Kings 4-0"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+808",
-      "prob": 11.0,
+      "odds": "+800",
+      "prob": 11.1,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Buffalo Sabres",
-      "abbr": "BUF",
-      "odds": "+1325",
-      "prob": 7.0,
-      "tier": "con",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1611",
-      "prob": 5.8,
-      "tier": "con",
-      "status": "Live odds (hockeystats)"
+      "odds": "+950",
+      "prob": 9.5,
+      "tier": "fav",
+      "status": "Live odds"
     },
     {
       "name": "Minnesota Wild",
       "abbr": "MIN",
-      "odds": "+2131",
-      "prob": 4.5,
+      "odds": "+1600",
+      "prob": 5.9,
       "tier": "con",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
+    },
+    {
+      "name": "Buffalo Sabres",
+      "abbr": "BUF",
+      "odds": "+2000",
+      "prob": 4.8,
+      "tier": "con",
+      "status": "Live odds"
     },
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+2991",
-      "prob": 3.2,
+      "odds": "+2500",
+      "prob": 3.8,
       "tier": "con",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
     }
   ]
 }
