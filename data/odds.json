@@ -1,9 +1,8 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-10T22:54:00Z",
+    "lastUpdated": "2026-05-11T03:59:01Z",
     "sources": [
-      "espn",
-      "espn_bracket"
+      "hockeystats"
     ],
     "teamsRemaining": 7,
     "eliminated": [
@@ -53,58 +52,58 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+155",
-      "prob": 39.2,
+      "odds": "+154",
+      "prob": 39.4,
       "tier": "fav",
-      "status": "Adv - Swept Senators 4-0"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+185",
-      "prob": 35.1,
+      "odds": "+283",
+      "prob": 26.1,
       "tier": "fav",
-      "status": "Adv - Swept Kings 4-0"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+550",
-      "prob": 15.4,
+      "odds": "+534",
+      "prob": 15.8,
       "tier": "fav",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+1300",
-      "prob": 7.1,
+      "odds": "+1411",
+      "prob": 6.6,
       "tier": "con",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1300",
-      "prob": 7.1,
+      "odds": "+1737",
+      "prob": 5.4,
       "tier": "con",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Minnesota Wild",
       "abbr": "MIN",
-      "odds": "+1600",
-      "prob": 5.9,
+      "odds": "+2322",
+      "prob": 4.1,
       "tier": "con",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+4500",
-      "prob": 2.2,
+      "odds": "+3955",
+      "prob": 2.5,
       "tier": "horse",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     }
   ]
 }
