@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-11T22:58:56Z",
+    "lastUpdated": "2026-05-12T03:41:39Z",
     "sources": [
       "hockeystats"
     ],
@@ -39,70 +39,70 @@
       "bg": "#AF1E2D",
       "accent": "#192168"
     },
-    "MIN": {
-      "bg": "#477124",
-      "accent": "#792E4C"
-    },
     "ANA": {
       "bg": "#F47A38",
       "accent": "#B9975B"
+    },
+    "MIN": {
+      "bg": "#477124",
+      "accent": "#792E4C"
     }
   },
   "teams": [
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+148",
-      "prob": 40.3,
+      "odds": "+155",
+      "prob": 39.3,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+256",
-      "prob": 28.1,
+      "odds": "+201",
+      "prob": 33.3,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+808",
-      "prob": 11.0,
+      "odds": "+856",
+      "prob": 10.5,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+1325",
-      "prob": 7.0,
+      "odds": "+1373",
+      "prob": 6.8,
       "tier": "con",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1611",
-      "prob": 5.8,
-      "tier": "con",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Minnesota Wild",
-      "abbr": "MIN",
-      "odds": "+2131",
-      "prob": 4.5,
+      "odds": "+1681",
+      "prob": 5.6,
       "tier": "con",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+2991",
-      "prob": 3.2,
+      "odds": "+3189",
+      "prob": 3.0,
       "tier": "con",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Minnesota Wild",
+      "abbr": "MIN",
+      "odds": "+6293",
+      "prob": 1.6,
+      "tier": "horse",
       "status": "Live odds (hockeystats)"
     }
   ]
