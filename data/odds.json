@@ -1,9 +1,8 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-12T23:06:08Z",
+    "lastUpdated": "2026-05-13T03:51:50Z",
     "sources": [
-      "espn",
-      "espn_bracket"
+      "hockeystats"
     ],
     "teamsRemaining": 7,
     "eliminated": [
@@ -20,25 +19,25 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "COL": {
-      "bg": "#6F263D",
-      "accent": "#236192"
-    },
     "CAR": {
       "bg": "#CC0000",
       "accent": "#000000"
+    },
+    "COL": {
+      "bg": "#6F263D",
+      "accent": "#236192"
     },
     "VGK": {
       "bg": "#B4975A",
       "accent": "#333F4C"
     },
-    "MTL": {
-      "bg": "#AF1E2D",
-      "accent": "#192168"
-    },
     "BUF": {
       "bg": "#274488",
       "accent": "#FFB81C"
+    },
+    "MTL": {
+      "bg": "#AF1E2D",
+      "accent": "#192168"
     },
     "ANA": {
       "bg": "#F47A38",
@@ -51,60 +50,60 @@
   },
   "teams": [
     {
-      "name": "Colorado Avalanche",
-      "abbr": "COL",
-      "odds": "+140",
-      "prob": 41.7,
-      "tier": "fav",
-      "status": "Adv - Swept Kings 4-0"
-    },
-    {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+155",
-      "prob": 39.2,
+      "odds": "+153",
+      "prob": 39.6,
       "tier": "fav",
-      "status": "Adv - Swept Senators 4-0"
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Colorado Avalanche",
+      "abbr": "COL",
+      "odds": "+233",
+      "prob": 30.0,
+      "tier": "fav",
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+900",
-      "prob": 10.0,
+      "odds": "+819",
+      "prob": 10.9,
       "tier": "fav",
-      "status": "Live odds"
-    },
-    {
-      "name": "Montreal Canadiens",
-      "abbr": "MTL",
-      "odds": "+1000",
-      "prob": 9.1,
-      "tier": "fav",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+2000",
-      "prob": 4.8,
+      "odds": "+850",
+      "prob": 10.5,
+      "tier": "fav",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Montreal Canadiens",
+      "abbr": "MTL",
+      "odds": "+2422",
+      "prob": 4.0,
       "tier": "con",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+2800",
-      "prob": 3.4,
+      "odds": "+2915",
+      "prob": 3.3,
       "tier": "con",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Minnesota Wild",
       "abbr": "MIN",
-      "odds": "+4500",
-      "prob": 2.2,
+      "odds": "+5736",
+      "prob": 1.7,
       "tier": "horse",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     }
   ]
 }
