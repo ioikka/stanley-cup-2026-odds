@@ -1,15 +1,16 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-13T23:09:26Z",
+    "lastUpdated": "2026-05-14T03:51:24Z",
     "sources": [
       "hockeystats"
     ],
-    "teamsRemaining": 7,
+    "teamsRemaining": 6,
     "eliminated": [
       "Boston Bruins",
       "Dallas Stars",
       "Edmonton Oilers",
       "Los Angeles Kings",
+      "Minnesota Wild",
       "Ottawa Senators",
       "Philadelphia Flyers",
       "Pittsburgh Penguins",
@@ -39,10 +40,6 @@
       "bg": "#AF1E2D",
       "accent": "#192168"
     },
-    "MIN": {
-      "bg": "#477124",
-      "accent": "#792E4C"
-    },
     "ANA": {
       "bg": "#F47A38",
       "accent": "#B9975B"
@@ -52,56 +49,48 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+155",
-      "prob": 39.2,
+      "odds": "+158",
+      "prob": 38.7,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+250",
-      "prob": 28.6,
+      "odds": "+220",
+      "prob": 31.2,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+582",
-      "prob": 14.7,
+      "odds": "+598",
+      "prob": 14.3,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+848",
-      "prob": 10.5,
+      "odds": "+862",
+      "prob": 10.4,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+2486",
-      "prob": 3.9,
+      "odds": "+2532",
+      "prob": 3.8,
       "tier": "con",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Minnesota Wild",
-      "abbr": "MIN",
-      "odds": "+6111",
-      "prob": 1.6,
-      "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+6331",
-      "prob": 1.6,
+      "odds": "+6519",
+      "prob": 1.5,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     }
