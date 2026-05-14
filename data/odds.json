@@ -1,8 +1,9 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-14T19:57:21Z",
+    "lastUpdated": "2026-05-14T21:17:41Z",
     "sources": [
-      "hockeystats"
+      "espn",
+      "espn_bracket"
     ],
     "teamsRemaining": 6,
     "eliminated": [
@@ -20,13 +21,13 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "CAR": {
-      "bg": "#CC0000",
-      "accent": "#000000"
-    },
     "COL": {
       "bg": "#6F263D",
       "accent": "#236192"
+    },
+    "CAR": {
+      "bg": "#CC0000",
+      "accent": "#000000"
     },
     "VGK": {
       "bg": "#B4975A",
@@ -47,52 +48,52 @@
   },
   "teams": [
     {
-      "name": "Carolina Hurricanes",
-      "abbr": "CAR",
-      "odds": "+159",
-      "prob": 38.6,
-      "tier": "fav",
-      "status": "Live odds (hockeystats)"
-    },
-    {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+214",
-      "prob": 31.8,
+      "odds": "+130",
+      "prob": 43.5,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Adv - Swept Kings 4-0"
+    },
+    {
+      "name": "Carolina Hurricanes",
+      "abbr": "CAR",
+      "odds": "+160",
+      "prob": 38.5,
+      "tier": "fav",
+      "status": "Adv - Swept Senators 4-0"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+635",
-      "prob": 13.6,
+      "odds": "+700",
+      "prob": 12.5,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+840",
-      "prob": 10.6,
-      "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "odds": "+1200",
+      "prob": 7.7,
+      "tier": "con",
+      "status": "Live odds"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+2531",
-      "prob": 3.8,
+      "odds": "+1400",
+      "prob": 6.7,
       "tier": "con",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
     },
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+6631",
-      "prob": 1.5,
+      "odds": "+5500",
+      "prob": 1.8,
       "tier": "horse",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
     }
   ]
 }
