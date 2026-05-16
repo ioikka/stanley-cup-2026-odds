@@ -1,9 +1,8 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-16T20:55:30Z",
+    "lastUpdated": "2026-05-16T22:53:28Z",
     "sources": [
-      "espn",
-      "espn_bracket"
+      "hockeystats"
     ],
     "teamsRemaining": 5,
     "eliminated": [
@@ -22,13 +21,13 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "COL": {
-      "bg": "#6F263D",
-      "accent": "#236192"
-    },
     "CAR": {
       "bg": "#CC0000",
       "accent": "#000000"
+    },
+    "COL": {
+      "bg": "#6F263D",
+      "accent": "#236192"
     },
     "VGK": {
       "bg": "#B4975A",
@@ -45,44 +44,44 @@
   },
   "teams": [
     {
-      "name": "Colorado Avalanche",
-      "abbr": "COL",
-      "odds": "+130",
-      "prob": 43.5,
-      "tier": "fav",
-      "status": "Adv - Swept Kings 4-0"
-    },
-    {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+165",
-      "prob": 37.7,
+      "odds": "+149",
+      "prob": 40.1,
       "tier": "fav",
-      "status": "Adv - Swept Senators 4-0"
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Colorado Avalanche",
+      "abbr": "COL",
+      "odds": "+224",
+      "prob": 30.9,
+      "tier": "fav",
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+600",
-      "prob": 14.3,
+      "odds": "+484",
+      "prob": 17.1,
       "tier": "fav",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+950",
-      "prob": 9.5,
-      "tier": "fav",
-      "status": "Live odds"
+      "odds": "+1466",
+      "prob": 6.4,
+      "tier": "con",
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+2500",
-      "prob": 3.8,
+      "odds": "+1714",
+      "prob": 5.5,
       "tier": "con",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     }
   ]
 }
