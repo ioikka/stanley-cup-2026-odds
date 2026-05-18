@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-18T04:08:15Z",
+    "lastUpdated": "2026-05-18T10:14:45Z",
     "sources": [
       "hockeystats"
     ],
@@ -46,23 +46,23 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+165",
-      "prob": 37.7,
+      "odds": "+164",
+      "prob": 37.9,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+228",
-      "prob": 30.5,
+      "odds": "+227",
+      "prob": 30.6,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+505",
+      "odds": "+508",
       "prob": 16.5,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
@@ -70,15 +70,15 @@
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+772",
-      "prob": 11.5,
+      "odds": "+785",
+      "prob": 11.3,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+2511",
+      "odds": "+2526",
       "prob": 3.8,
       "tier": "con",
       "status": "Live odds (hockeystats)"
