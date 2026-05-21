@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-20T23:16:59Z",
+    "lastUpdated": "2026-05-21T04:11:29Z",
     "sources": [
       "hockeystats"
     ],
@@ -26,13 +26,13 @@
       "bg": "#CC0000",
       "accent": "#000000"
     },
-    "COL": {
-      "bg": "#6F263D",
-      "accent": "#236192"
-    },
     "VGK": {
       "bg": "#B4975A",
       "accent": "#333F4C"
+    },
+    "COL": {
+      "bg": "#6F263D",
+      "accent": "#236192"
     },
     "MTL": {
       "bg": "#AF1E2D",
@@ -43,32 +43,32 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+135",
-      "prob": 42.5,
-      "tier": "fav",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Colorado Avalanche",
-      "abbr": "COL",
-      "odds": "+222",
-      "prob": 31.1,
+      "odds": "+128",
+      "prob": 43.8,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+475",
-      "prob": 17.4,
+      "odds": "+303",
+      "prob": 24.8,
+      "tier": "fav",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Colorado Avalanche",
+      "abbr": "COL",
+      "odds": "+355",
+      "prob": 22.0,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1004",
-      "prob": 9.1,
+      "odds": "+958",
+      "prob": 9.5,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     }
