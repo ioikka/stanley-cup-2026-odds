@@ -1,8 +1,9 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-23T22:56:30Z",
+    "lastUpdated": "2026-05-24T04:05:16Z",
     "sources": [
-      "hockeystats"
+      "espn",
+      "espn_bracket"
     ],
     "teamsRemaining": 4,
     "eliminated": [
@@ -22,55 +23,55 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "VGK": {
-      "bg": "#B4975A",
-      "accent": "#333F4C"
-    },
     "CAR": {
       "bg": "#CC0000",
       "accent": "#000000"
     },
-    "MTL": {
-      "bg": "#AF1E2D",
-      "accent": "#192168"
+    "VGK": {
+      "bg": "#B4975A",
+      "accent": "#333F4C"
     },
     "COL": {
       "bg": "#6F263D",
       "accent": "#236192"
+    },
+    "MTL": {
+      "bg": "#AF1E2D",
+      "accent": "#192168"
     }
   },
   "teams": [
     {
-      "name": "Vegas Golden Knights",
-      "abbr": "VGK",
-      "odds": "+167",
-      "prob": 37.4,
-      "tier": "fav",
-      "status": "Live odds (hockeystats)"
-    },
-    {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+211",
-      "prob": 32.2,
+      "odds": "+140",
+      "prob": 41.7,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Adv - Swept Senators 4-0"
     },
     {
-      "name": "Montreal Canadiens",
-      "abbr": "MTL",
-      "odds": "+491",
-      "prob": 16.9,
+      "name": "Vegas Golden Knights",
+      "abbr": "VGK",
+      "odds": "+230",
+      "prob": 30.3,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
     },
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+641",
-      "prob": 13.5,
+      "odds": "+425",
+      "prob": 19.0,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Adv - Swept Kings 4-0"
+    },
+    {
+      "name": "Montreal Canadiens",
+      "abbr": "MTL",
+      "odds": "+500",
+      "prob": 16.7,
+      "tier": "fav",
+      "status": "Live odds"
     }
   ]
 }
