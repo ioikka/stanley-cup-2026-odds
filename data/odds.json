@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-27T04:16:10Z",
+    "lastUpdated": "2026-05-27T10:03:16Z",
     "sources": [
       "hockeystats"
     ],
@@ -41,7 +41,7 @@
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
       "odds": "+109",
-      "prob": 47.9,
+      "prob": 48.0,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
@@ -56,7 +56,7 @@
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1536",
+      "odds": "+1552",
       "prob": 6.1,
       "tier": "con",
       "status": "Live odds (hockeystats)"
