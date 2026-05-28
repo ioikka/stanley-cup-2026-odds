@@ -1,9 +1,8 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-28T20:29:58Z",
+    "lastUpdated": "2026-05-28T23:21:20Z",
     "sources": [
-      "espn",
-      "espn_bracket"
+      "hockeystats"
     ],
     "teamsRemaining": 3,
     "eliminated": [
@@ -41,26 +40,26 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "-145",
-      "prob": 59.2,
+      "odds": "-112",
+      "prob": 52.8,
       "tier": "fav",
-      "status": "Adv - Swept Senators 4-0"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+130",
-      "prob": 43.5,
+      "odds": "+121",
+      "prob": 45.2,
       "tier": "fav",
-      "status": "Live odds"
+      "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+3000",
-      "prob": 3.2,
-      "tier": "con",
-      "status": "Live odds"
+      "odds": "+4841",
+      "prob": 2.0,
+      "tier": "horse",
+      "status": "Live odds (hockeystats)"
     }
   ]
 }
