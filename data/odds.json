@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-05-27T22:00:34Z",
+    "lastUpdated": "2026-05-28T04:04:36Z",
     "sources": [
       "hockeystats"
     ],
@@ -23,13 +23,13 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "VGK": {
-      "bg": "#B4975A",
-      "accent": "#333F4C"
-    },
     "CAR": {
       "bg": "#CC0000",
       "accent": "#000000"
+    },
+    "VGK": {
+      "bg": "#B4975A",
+      "accent": "#333F4C"
     },
     "MTL": {
       "bg": "#AF1E2D",
@@ -38,27 +38,27 @@
   },
   "teams": [
     {
-      "name": "Vegas Golden Knights",
-      "abbr": "VGK",
-      "odds": "+109",
-      "prob": 48.0,
+      "name": "Carolina Hurricanes",
+      "abbr": "CAR",
+      "odds": "-112",
+      "prob": 52.8,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
-      "name": "Carolina Hurricanes",
-      "abbr": "CAR",
-      "odds": "+117",
-      "prob": 46.0,
+      "name": "Vegas Golden Knights",
+      "abbr": "VGK",
+      "odds": "+121",
+      "prob": 45.2,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Montreal Canadiens",
       "abbr": "MTL",
-      "odds": "+1552",
-      "prob": 6.1,
-      "tier": "con",
+      "odds": "+4816",
+      "prob": 2.0,
+      "tier": "horse",
       "status": "Live odds (hockeystats)"
     }
   ]
