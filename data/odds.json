@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-06-01T23:38:06Z",
+    "lastUpdated": "2026-06-02T04:25:45Z",
     "sources": [
       "hockeystats"
     ],
@@ -37,16 +37,16 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "-126",
-      "prob": 55.8,
+      "odds": "-129",
+      "prob": 56.4,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+126",
-      "prob": 44.2,
+      "odds": "+129",
+      "prob": 43.6,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     }
