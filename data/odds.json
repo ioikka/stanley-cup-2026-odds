@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-06-04T23:12:28Z",
+    "lastUpdated": "2026-06-05T04:13:30Z",
     "sources": [
       "hockeystats"
     ],
@@ -24,29 +24,29 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "VGK": {
-      "bg": "#B4975A",
-      "accent": "#333F4C"
-    },
     "CAR": {
       "bg": "#CC0000",
       "accent": "#000000"
+    },
+    "VGK": {
+      "bg": "#B4975A",
+      "accent": "#333F4C"
     }
   },
   "teams": [
     {
-      "name": "Vegas Golden Knights",
-      "abbr": "VGK",
-      "odds": "-147",
-      "prob": 59.5,
+      "name": "Carolina Hurricanes",
+      "abbr": "CAR",
+      "odds": "-122",
+      "prob": 55.0,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
-      "name": "Carolina Hurricanes",
-      "abbr": "CAR",
-      "odds": "+147",
-      "prob": 40.5,
+      "name": "Vegas Golden Knights",
+      "abbr": "VGK",
+      "odds": "+122",
+      "prob": 45.0,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     }
