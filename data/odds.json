@@ -1,8 +1,9 @@
 {
   "metadata": {
-    "lastUpdated": "2026-06-07T04:23:00Z",
+    "lastUpdated": "2026-06-07T09:22:03Z",
     "sources": [
-      "hockeystats"
+      "espn",
+      "espn_bracket"
     ],
     "teamsRemaining": 2,
     "eliminated": [
@@ -24,31 +25,31 @@
     "season": "2025-26"
   },
   "teamColors": {
-    "CAR": {
-      "bg": "#CC0000",
-      "accent": "#000000"
-    },
     "VGK": {
       "bg": "#B4975A",
       "accent": "#333F4C"
+    },
+    "CAR": {
+      "bg": "#CC0000",
+      "accent": "#000000"
     }
   },
   "teams": [
     {
-      "name": "Carolina Hurricanes",
-      "abbr": "CAR",
-      "odds": "-122",
-      "prob": 54.9,
-      "tier": "fav",
-      "status": "Live odds (hockeystats)"
-    },
-    {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+122",
-      "prob": 45.1,
+      "odds": "-185",
+      "prob": 64.9,
       "tier": "fav",
-      "status": "Live odds (hockeystats)"
+      "status": "Live odds"
+    },
+    {
+      "name": "Carolina Hurricanes",
+      "abbr": "CAR",
+      "odds": "+150",
+      "prob": 40.0,
+      "tier": "fav",
+      "status": "Adv - Swept Senators 4-0"
     }
   ]
 }
