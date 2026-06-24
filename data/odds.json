@@ -1,7 +1,8 @@
 {
   "metadata": {
-    "lastUpdated": "2026-06-24T16:24:56Z",
+    "lastUpdated": "2026-06-24T19:52:27Z",
     "sources": [
+      "espn_bracket",
       "hockeystats",
       "cached"
     ],
