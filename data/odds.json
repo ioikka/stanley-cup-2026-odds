@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "lastUpdated": "2026-07-03T19:36:08Z",
+    "lastUpdated": "2026-07-03T21:12:22Z",
     "sources": [
-      "espn",
-      "espn_bracket"
+      "hockeystats",
+      "cached"
     ],
     "teamsRemaining": 32,
     "eliminated": [
@@ -17,8 +17,8 @@
       "accent": "#000000"
     },
     "FLA": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "COL": {
       "bg": "#6F263D",
@@ -45,24 +45,24 @@
       "accent": "#8F8F8C"
     },
     "WSH": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "MTL": {
       "bg": "#AF1E2D",
       "accent": "#192168"
     },
     "LA": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "BUF": {
       "bg": "#274488",
       "accent": "#FFB81C"
     },
     "NJ": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "ANA": {
       "bg": "#F47A38",
@@ -77,24 +77,24 @@
       "accent": "#000000"
     },
     "TOR": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "SJ": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "PHI": {
       "bg": "#ED174C",
       "accent": "#000000"
     },
     "CBJ": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "NYR": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "BOS": {
       "bg": "#000000",
@@ -105,40 +105,40 @@
       "accent": "#000000"
     },
     "NYI": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "WPG": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "DET": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "STL": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "NSH": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "CHI": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "SEA": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "CGY": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     },
     "VAN": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
+      "bg": "#000",
+      "accent": "#FFF"
     }
   },
   "teams": [
