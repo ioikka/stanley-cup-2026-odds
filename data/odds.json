@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastUpdated": "2026-11-23T19:58:39Z",
+    "lastUpdated": "2026-11-24T04:41:27Z",
     "sources": [
       "hockeystats"
     ],
@@ -29,17 +29,17 @@
       "bg": "#477124",
       "accent": "#792E4C"
     },
-    "DAL": {
-      "bg": "#006847",
-      "accent": "#8F8F8C"
+    "COL": {
+      "bg": "#6F263D",
+      "accent": "#236192"
     },
     "EDM": {
       "bg": "#FFB81C",
       "accent": "#041E42"
     },
-    "COL": {
-      "bg": "#6F263D",
-      "accent": "#236192"
+    "DAL": {
+      "bg": "#006847",
+      "accent": "#8F8F8C"
     },
     "NJD": {
       "bg": "#000000",
@@ -49,13 +49,13 @@
       "bg": "#C52032",
       "accent": "#000000"
     },
-    "MTL": {
-      "bg": "#AF1E2D",
-      "accent": "#192168"
-    },
     "BOS": {
       "bg": "#000000",
       "accent": "#FFB81C"
+    },
+    "MTL": {
+      "bg": "#AF1E2D",
+      "accent": "#192168"
     },
     "WSH": {
       "bg": "#000000",
@@ -73,19 +73,19 @@
       "bg": "#6CCEB2",
       "accent": "#192168"
     },
-    "STL": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
-    },
     "BUF": {
       "bg": "#274488",
       "accent": "#FFB81C"
     },
-    "NSH": {
+    "STL": {
       "bg": "#000000",
       "accent": "#FFFFFF"
     },
     "WPG": {
+      "bg": "#000000",
+      "accent": "#FFFFFF"
+    },
+    "NSH": {
       "bg": "#000000",
       "accent": "#FFFFFF"
     },
@@ -96,6 +96,10 @@
     "PHI": {
       "bg": "#ED174C",
       "accent": "#000000"
+    },
+    "TOR": {
+      "bg": "#000000",
+      "accent": "#FFFFFF"
     },
     "ANA": {
       "bg": "#F47A38",
@@ -109,10 +113,6 @@
       "bg": "#000000",
       "accent": "#FFFFFF"
     },
-    "TOR": {
-      "bg": "#000000",
-      "accent": "#FFFFFF"
-    },
     "SJS": {
       "bg": "#000000",
       "accent": "#FFFFFF"
@@ -121,11 +121,11 @@
       "bg": "#000000",
       "accent": "#FFFFFF"
     },
-    "CGY": {
+    "DET": {
       "bg": "#000000",
       "accent": "#FFFFFF"
     },
-    "DET": {
+    "CGY": {
       "bg": "#000000",
       "accent": "#FFFFFF"
     },
@@ -138,55 +138,39 @@
     {
       "name": "Carolina Hurricanes",
       "abbr": "CAR",
-      "odds": "+672",
-      "prob": 13.0,
+      "odds": "+678",
+      "prob": 12.9,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Tampa Bay Lightning",
       "abbr": "TB",
-      "odds": "+794",
-      "prob": 11.2,
+      "odds": "+786",
+      "prob": 11.3,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Florida Panthers",
       "abbr": "FLA",
-      "odds": "+949",
-      "prob": 9.5,
+      "odds": "+944",
+      "prob": 9.6,
       "tier": "fav",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Vegas Golden Knights",
       "abbr": "VGK",
-      "odds": "+1048",
-      "prob": 8.7,
+      "odds": "+1083",
+      "prob": 8.5,
       "tier": "con",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Minnesota Wild",
       "abbr": "MIN",
-      "odds": "+1167",
-      "prob": 7.9,
-      "tier": "con",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Dallas Stars",
-      "abbr": "DAL",
-      "odds": "+1185",
-      "prob": 7.8,
-      "tier": "con",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Edmonton Oilers",
-      "abbr": "EDM",
-      "odds": "+1197",
+      "odds": "+1202",
       "prob": 7.7,
       "tier": "con",
       "status": "Live odds (hockeystats)"
@@ -194,39 +178,55 @@
     {
       "name": "Colorado Avalanche",
       "abbr": "COL",
-      "odds": "+1194",
+      "odds": "+1205",
       "prob": 7.7,
+      "tier": "con",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Edmonton Oilers",
+      "abbr": "EDM",
+      "odds": "+1213",
+      "prob": 7.6,
+      "tier": "con",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Dallas Stars",
+      "abbr": "DAL",
+      "odds": "+1235",
+      "prob": 7.5,
       "tier": "con",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "New Jersey Devils",
       "abbr": "NJD",
-      "odds": "+1346",
-      "prob": 6.9,
+      "odds": "+1317",
+      "prob": 7.1,
       "tier": "con",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Ottawa Senators",
       "abbr": "OTT",
-      "odds": "+3899",
-      "prob": 2.5,
-      "tier": "horse",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Montreal Canadiens",
-      "abbr": "MTL",
-      "odds": "+3827",
-      "prob": 2.5,
+      "odds": "+3789",
+      "prob": 2.6,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Boston Bruins",
       "abbr": "BOS",
-      "odds": "+4122",
+      "odds": "+4104",
+      "prob": 2.4,
+      "tier": "horse",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Montreal Canadiens",
+      "abbr": "MTL",
+      "odds": "+4108",
       "prob": 2.4,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -234,7 +234,7 @@
     {
       "name": "Washington Capitals",
       "abbr": "WSH",
-      "odds": "+4419",
+      "odds": "+4364",
       "prob": 2.2,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -242,47 +242,39 @@
     {
       "name": "New York Rangers",
       "abbr": "NYR",
-      "odds": "+5071",
-      "prob": 1.9,
+      "odds": "+4957",
+      "prob": 2.0,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Los Angeles Kings",
       "abbr": "LAK",
-      "odds": "+7056",
-      "prob": 1.4,
+      "odds": "+5276",
+      "prob": 1.9,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Utah Mammoth",
       "abbr": "UTA",
-      "odds": "+8341",
-      "prob": 1.2,
-      "tier": "horse",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "St. Louis Blues",
-      "abbr": "STL",
-      "odds": "+8996",
-      "prob": 1.1,
+      "odds": "+5762",
+      "prob": 1.7,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "Buffalo Sabres",
       "abbr": "BUF",
-      "odds": "+8667",
+      "odds": "+8703",
       "prob": 1.1,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
-      "name": "Nashville Predators",
-      "abbr": "NSH",
-      "odds": "+10118",
+      "name": "St. Louis Blues",
+      "abbr": "STL",
+      "odds": "+9666",
       "prob": 1.0,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -290,15 +282,23 @@
     {
       "name": "Winnipeg Jets",
       "abbr": "WPG",
-      "odds": "+10069",
+      "odds": "+9621",
       "prob": 1.0,
+      "tier": "horse",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Nashville Predators",
+      "abbr": "NSH",
+      "odds": "+11412",
+      "prob": 0.9,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
     },
     {
       "name": "New York Islanders",
       "abbr": "NYI",
-      "odds": "+41917",
+      "odds": "+47070",
       "prob": 0.2,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -306,7 +306,15 @@
     {
       "name": "Philadelphia Flyers",
       "abbr": "PHI",
-      "odds": "+55870",
+      "odds": "+53857",
+      "prob": 0.2,
+      "tier": "horse",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Toronto Maple Leafs",
+      "abbr": "TOR",
+      "odds": "+50576",
       "prob": 0.2,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -314,7 +322,7 @@
     {
       "name": "Anaheim Ducks",
       "abbr": "ANA",
-      "odds": "+42273",
+      "odds": "+55047",
       "prob": 0.2,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -322,7 +330,7 @@
     {
       "name": "Pittsburgh Penguins",
       "abbr": "PIT",
-      "odds": "+54052",
+      "odds": "+52904",
       "prob": 0.2,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -330,15 +338,7 @@
     {
       "name": "Columbus Blue Jackets",
       "abbr": "CBJ",
-      "odds": "+91925",
-      "prob": 0.1,
-      "tier": "horse",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Toronto Maple Leafs",
-      "abbr": "TOR",
-      "odds": "+72015",
+      "odds": "+111011",
       "prob": 0.1,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -346,7 +346,7 @@
     {
       "name": "San Jose Sharks",
       "abbr": "SJS",
-      "odds": "+93650",
+      "odds": "+176371",
       "prob": 0.1,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -354,15 +354,7 @@
     {
       "name": "Seattle Kraken",
       "abbr": "SEA",
-      "odds": "+312400",
-      "prob": 0.0,
-      "tier": "horse",
-      "status": "Live odds (hockeystats)"
-    },
-    {
-      "name": "Calgary Flames",
-      "abbr": "CGY",
-      "odds": "+937400",
+      "odds": "+384515",
       "prob": 0.0,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -370,7 +362,15 @@
     {
       "name": "Detroit Red Wings",
       "abbr": "DET",
-      "odds": "+2499900",
+      "odds": "+2999900",
+      "prob": 0.0,
+      "tier": "horse",
+      "status": "Live odds (hockeystats)"
+    },
+    {
+      "name": "Calgary Flames",
+      "abbr": "CGY",
+      "odds": "+882253",
       "prob": 0.0,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
@@ -378,7 +378,7 @@
     {
       "name": "Chicago Blackhawks",
       "abbr": "CHI",
-      "odds": "+14999900",
+      "odds": "+2499900",
       "prob": 0.0,
       "tier": "horse",
       "status": "Live odds (hockeystats)"
